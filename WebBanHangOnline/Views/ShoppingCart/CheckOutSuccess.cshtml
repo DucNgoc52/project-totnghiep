@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Đặt hàng thành công";
+}
+<link href="~/Content/assets/styles/DHTC.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Content/assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/assets/styles/categories_responsive.css">
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix">
+
+            <!-- Breadcrumbs -->
+
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/shoppingcart"><i class="fa fa-angle-right" aria-hidden="true"></i>Giỏ hàng</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Thanh toán</a></li>
+                </ul>
+            </div>
+
+            <!-- Sidebar -->
+            <!-- Main Content -->
+
+            <div class="row">
+                <div class="col-md-12 text-center" id="load_data">
+                    <h2 >Chúc mừng! Bạn đã đặt hàng thành công</h2>
+                    <i class="fa fa-check-circle" style="font-size:100px;color:green"></i>
+                    <div class="pyro"><div class="before"></div><div class="after"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/assets/js/categories_custom.js"></script>
+    <script src="~/Content/assets/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+}

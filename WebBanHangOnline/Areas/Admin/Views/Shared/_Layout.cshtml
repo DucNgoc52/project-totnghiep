@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hệ thống quản lý</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/fontawesome-free/css/all.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="~/Content/clients/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="~/Content/clients/plugins/dropzone/min/dropzone.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/clients/dist/css/adminlte.min.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link rel="icon" href="data:image/png;base64,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" type="image/gif">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!--Nav bar-->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            @RenderSection("naviheader", required: false)
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Navbar Search -->
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-comments"></i>
+                        <span class="badge badge-danger navbar-badge">3</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/Content/clients/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Brad Diesel
+                                        <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">Call me whenever you can...</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/Content/clients/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        John Pierce
+                                        <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">I got your message bro</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <!-- Message Start -->
+                            <div class="media">
+                                <img src="~/Content/clients/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                <div class="media-body">
+                                    <h3 class="dropdown-item-title">
+                                        Nora Silvester
+                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                    </h3>
+                                    <p class="text-sm">The subject goes here</p>
+                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                </div>
+                            </div>
+                            <!-- Message End -->
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                    </div>
+                </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">15</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">15 Notifications</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-envelope mr-2"></i> 4 new messages
+                            <span class="float-right text-muted text-sm">3 mins</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> 8 friend requests
+                            <span class="float-right text-muted text-sm">12 hours</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-file mr-2"></i> 3 new reports
+                            <span class="float-right text-muted text-sm">2 days</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="/admin/home" class="brand-link">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/CQ_Logo.jpeg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Chát Quán</span>
+            </a>
+
+            @Html.Partial("_PartialSideBar")
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 3.2.0-rc
+            </div>
+            <strong>Copyright &copy;2022 <a href="https://www.facebook.com/ducngoc0502/">Đức Ngọc</a>.</strong> All rights reserved.
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/clients/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Content/clients/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Content/clients/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="~/Content/clients/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="~/Content/clients/plugins/moment/moment.min.js"></script>
+    <script src="~/Content/clients/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="~/Content/clients/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="~/Content/clients/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Content/clients/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="~/Content/clients/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="~/Content/clients/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="~/Content/clients/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Content/clients/dist/js/adminlte.min.js"></script>
+    <script src="~/Scripts/autoNumeric-1.9.45.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+            //Date picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+
+            //Date and time picker
+            $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+                }
+            )
+
+            //Timepicker
+            $('#timepicker').datetimepicker({
+                format: 'LT'
+            })
+
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox()
+
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
+
+            $('.my-colorpicker2').on('colorpickerChange', function (event) {
+                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+            })
+
+            $("input[data-bootstrap-switch]").each(function () {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            })
+
+        })
+        // BS-Stepper Init
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+        //})
+
+        //// DropzoneJS Demo Code Start
+        //Dropzone.autoDiscover = false
+
+        //// Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
+        //var previewNode = document.querySelector("#template")
+        //previewNode.id = ""
+        //var previewTemplate = previewNode.parentNode.innerHTML
+        //previewNode.parentNode.removeChild(previewNode)
+
+        //var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
+        //    url: "/target-url", // Set the url
+        //    thumbnailWidth: 80,
+        //    thumbnailHeight: 80,
+        //    parallelUploads: 20,
+        //    previewTemplate: previewTemplate,
+        //    autoQueue: false, // Make sure the files aren't queued until manually added
+        //    previewsContainer: "#previews", // Define the container to display the previews
+        //    clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.
+        //})
+
+        //myDropzone.on("addedfile", function (file) {
+        //    // Hookup the start button
+        //    file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file) }
+        //})
+
+        //// Update the total progress bar
+        //myDropzone.on("totaluploadprogress", function (progress) {
+        //    document.querySelector("#total-progress .progress-bar").style.width = progress + "%"
+        //})
+
+        //myDropzone.on("sending", function (file) {
+        //    // Show the total progress bar when upload starts
+        //    document.querySelector("#total-progress").style.opacity = "1"
+        //    // And disable the start button
+        //    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")
+        //})
+
+        //// Hide the total progress bar when nothing's uploading anymore
+        //myDropzone.on("queuecomplete", function (progress) {
+        //    document.querySelector("#total-progress").style.opacity = "0"
+        //})
+
+        //// Setup the buttons for all transfers
+        //// The "add files" button doesn't need to be setup because the config
+        //// `clickable` has already been specified.
+        //document.querySelector("#actions .start").onclick = function () {
+        //    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
+        //}
+        //document.querySelector("#actions .cancel").onclick = function () {
+        //    myDropzone.removeAllFiles(true)
+        //}
+        //  // DropzoneJS Demo Code End
+    </script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

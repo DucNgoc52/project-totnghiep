@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.EF.Product>
+<link href="~/Content/assets/styles/borderVip.css" rel="stylesheet" />
+@if (Model != null && Model.Any())
+{
+    foreach (var item in Model)
+    {
+        var strImg = "";
+        var img = item.ProductImage.FirstOrDefault(x => x.IsDefault);
+        if (img != null)
+        {
+            strImg = img.Image;
+        }
+        <div class="product-item @item.ProductCategory.Alias" style="border-style: outset; border-color: #2F9599; border-width: 1px; background-color: #F8F8FF; ">
+            <div class="product discount product_filter">
+                <div class="product_image">
+                    <img src="@strImg" height="147" alt="@item.Title">
+                </div>
+                <div class="favorite favorite_left"></div>
+                @if (item.PriceSale > 0)
+                {
+                    <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+                }
+                <div class="product_info">
+                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-p@(item.Id)">@item.Title</a></h6>
+                    @if (item.PriceSale > 0)
+                    {
+                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.PriceSale, 0)<span>@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</span></div>
+                    }
+                    else
+                    {
+                        <div class="product_price">@WebBanHangOnline.Common.Common.FormatNumber(item.Price, 0)</div>
+                    }
+                </div>
+            </div>
+            <div class="red_button add_to_cart_button"><a href="#" class="btnAddToCart" data-id="@item.Id">Thêm vào giỏ hàng<i class="fa fa-shopping-cart" style="font-size:20px;color:white"></i></a></div>
+        </div>
+    }
+}

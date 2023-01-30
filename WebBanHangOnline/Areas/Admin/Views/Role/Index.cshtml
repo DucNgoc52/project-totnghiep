@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@model IEnumerable<IdentityRole>
+@{
+    ViewBag.Title = "Danh sách phân quyền";
+}
+
+@section naviheader{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/home" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/admin/role" class="nav-link">Phân quyền</a>
+        </li>
+    </ul>
+}
+
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Danh sách quyền</h3>
+            <div class="card-tools">
+                <a href="/admin/role/create" class="btn btn-sm btn-success">Thêm mới</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên quyền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = 1;
+                        foreach (var items in Model)
+                        {
+                            <tr id="trow_@items.Id">
+                                <td>@i</td>
+                                <td>@items.Name</td>
+                                <td>
+                                    <a href="/admin/role/edit/@items.Id" class="btn btn-sm btn-primary">Sửa</a>
+                                    <a href="#" data-id="@items.Id" class="btn btn-sm btn-danger btnDeleteRL">Xóa</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <!--<div class="card-footer">
+            Footer
+        </div>-->
+        <!-- /.card-footer-->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            
+            $('body').on('click', '.btnDeleteRL', function () {
+                var id = $(this).data("id");
+                var conf = confirm('Bạn có chắc chắn muốn xóa quyền này không ?');
+                if (conf == true) {
+                    $.ajax({
+                        url: '/admin/role/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (res) {
+                            if (res.success) {
+                                $('#trow_' + id).remove();
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebBanHangOnline.Models.ShoppingCartItem>
+@using WebBanHangOnline.Common
+
+<table class="table">
+    <tr class="text-center">
+        <th>STT</th>
+        <th>Ảnh</th>
+        <th>Tên món </th>
+        <th>Danh mục</th>
+        <th> Đơn giá</th>
+        <th style="width:100px">Số lượng</th>
+        <th>Thành tiền</th>
+        <th style="width:300px"></th>
+    </tr>
+    @if (Model != null && Model.Any())
+    {
+        var i = 0;
+        var tongtien = decimal.Zero;
+        foreach (var item in Model)
+        {
+            tongtien += item.TotalPrice;
+            <tr class="text-center" id="trow_@item.ProductId">
+                <td>@(i+1)</td>
+                <td><img src="@item.ProductImage" width="60" /></td>
+                <td><a href="/chi-tiet/@item.Alias-p@(item.ProductId)">@item.ProductName</a></td>
+                <td>@item.CategoryName</td>
+                <td>@Common.FormatNumber(item.Price, 0)</td>
+                <td><input class="form-control" type="number" id="Quantity_@item.ProductId" value="@item.Quantity" /></td>
+                <td>@Common.FormatNumber(item.TotalPrice, 0)</td>
+                <td>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-success btnUpdate" btnUpdate><i class="fa fa-refresh"></i></a>
+                    <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+            i++;
+        }
+        <tr>
+            <th colspan="6" class="text-right">Tổng tiền</th>
+            <th class="text-center">@Common.FormatNumber(tongtien, 0)đ</th>
+            <th></th>
+        </tr>
+    }
+    else
+    {
+        <tr class="text-center">
+            <th colspan="12"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRilGLmFIr13OG8P0j73PxEHc0pptuPo8MONp6MWHphn25lIwlEH1TmV_1DIgoGiAibGRg&usqp=CAU" /></th>
+        </tr>
+        <tr class="text-center">
+            <th colspan="12">Không có sản phẩm nào trong giỏ hàng.</th>
+        </tr>
+    }
+</table>
+@*<div class="form-group col-md-3">
+    <label>Ghi chú</label>
+    <textarea placeholder="Ghi chú cho đơn hàng của bạn" rows="3" cols="50"></textarea>
+</div>*@
